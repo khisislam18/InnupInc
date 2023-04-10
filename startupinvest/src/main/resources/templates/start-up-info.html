@@ -14,7 +14,7 @@
 <b>Сертифицирован: </b><div th:text="${startup.certified} ? 'Да': 'Нет'"></div><br>
 <b>Дата создания: </b><div th:text="${startup.creationDate}"></div><br>
 
-<form action="#" th:action="@{/product/delete/${startup.ID}}" method="post">
+<form action="#" th:action="@{/product/delete/${startup.ID}}" th:object="${startup}" method="post">
   <input type="submit" value="Удалить">
 </form>
 <form></form>

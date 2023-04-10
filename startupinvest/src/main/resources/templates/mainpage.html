@@ -31,11 +31,12 @@
 </div>
 <div class = "wrapper2">
     <div class="search">
-        <form class = "form-space">
-            <input type="text">
+        <form action="/" method="get">
+            <input class = "form-space" type="text" name="title">
+            <input type="submit" value="Поиск"/>
         </form>
-        <button class="searchButton">Найти старстап</button>
-        <button class="filterButton">Фильтр</button>
+<!--        <button class="searchButton">Найти старстап</button>
+        <button class="filterButton">Фильтр</button>-->
     </div>
     <table>
         <h3>Стартапы</h3>
@@ -57,22 +58,27 @@
 <hr>
 <form action ="/product/create"></form>
 <div class="startUps">
-    <th:block th:each="startup : ${startups}">
-        <div class="strup">
-            <a th:href="@{'/startup/' + ${startup.ID}}">
-                <table>
-                    <h4 class="name" th:text="${startup.title}"></h4>
-                    <h4 class="author" th:text="${startup.author}"></h4>
-                    <h4 class="price" th:text="${startup.price} + ' рублей'"></h4>
-                    <p class ="description" th:text="${startup.description}"></p>
-                </table>
-            </a>
-        </div>
-    </th:block>
+    <div th:if="${not #lists.isEmpty(startups)}">
+        <th:block th:each="startup : ${startups}">
+            <div class="strup">
+                <a th:href="@{'/startup/' + ${startup.ID}}">
+                    <table>
+                        <h4 class="name" th:text="${startup.title}"></h4>
+                        <h4 class="author" th:text="${startup.author}"></h4>
+                        <h4 class="price" th:text="${startup.price} + ' рублей'"></h4>
+                        <p class ="description" th:text="${startup.description}"></p>
+                    </table>
+                </a>
+            </div>
+        </th:block>
+    </div>
+    <div th:unless="${not #lists.isEmpty(startups)}">
+        <h4>Стартапов пока нет... Добавьте стартап</h4>
+    </div>
 </div>
 
 <!-- Fedya-->
-<div class="startUps">
+<!--<div class="startUps">
         <div class="strup">
                 <table>
                     <h4 class="name">IPhone</h4>
@@ -81,7 +87,7 @@
                     <p class ="description">qwdwqdqw</p>
                 </table>
         </div>
-</div>
+</div>-->
 <!-- Fedya-->
 
 </body>

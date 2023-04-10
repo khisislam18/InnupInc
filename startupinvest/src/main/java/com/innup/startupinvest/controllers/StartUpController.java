@@ -19,8 +19,8 @@ public class StartUpController {
     }
 
     @GetMapping("/")
-    public String startUps(Model model){
-        model.addAttribute("startups", startUpService.list());
+    public String startUps(@RequestParam(name = "title", required = false) String title, Model model){
+        model.addAttribute("startups", startUpService.startUpList(title));
         return "mainpage";
     }
     @PostMapping("/startup/create")
@@ -31,6 +31,6 @@ public class StartUpController {
     @PostMapping("/startup/delete/{id}")
     public String deleteStartUp(@PathVariable Long id){
         startUpService.deleteStartUp(id);
-        return "mainpage";
+        return "redirect:/";
     }
 }
