@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>StartUp</title>
 </head>
 <body>
-<p th:text=""></p>
 <h1>Start Up</h1><hr>
-<h4>Подробная информация о товаре</h4>
-<b>Название товара: </b>
-<form action="/startup/create" method="post">
-  Название стартапа: <input type="text" name="title"/><br><br>
-  Описание стартапа: <input type="text" name="description"/><br><br>
-  Цена: <input type="number" name="price"/><br><br>
-  Город: <input type="text" name="city"/><br><br>
-  Имя: <input type="text" name="author"/><br><br>
-  <input type="submit" value="Добавить стартап">
+<h4>Подробная информация о стартапе</h4>
+<b>Название: </b><div th:text="${startup.title}"></div><br>
+<b>Описание: </b><div th:text="${startup.description}"></div><br>
+<b>Цена: </b><div th:text="${startup.price}"></div><br>
+<b>Автор: </b><div th:text="${startup.author}"></div><br>
+<b>Сертифицирован: </b><div th:text="${startup.certified} ? 'Да': 'Нет'"></div><br>
+<b>Дата создания: </b><div th:text="${startup.creationDate}"></div><br>
+
+<form action="#" th:action="@{/product/delete/${startup.ID}}" method="post">
+  <input type="submit" value="Удалить">
 </form>
 <form></form>
 </body>

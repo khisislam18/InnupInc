@@ -1,0 +1,129 @@
+.body{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5%;
+}
+.staticUp{
+    font-size: 2rem;
+}
+.upper{
+    text-align: center;
+}
+.wrapper1{
+    padding-bottom: 25px;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+.mainact{
+    font-weight: 1000;
+    width:100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+.mainact *{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+.mainact ul li{
+    display:inline-flex;
+    justify-content: space-between;
+    padding-right:15px;
+}
+.wrapper2{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.search{
+    display: inline;
+    margin-left: 15em;
+    margin-right: 15em;
+}
+.form-space input{
+    border: none;
+    width: 100%;
+}
+.star1{
+    border: 1px dotted #000;
+    width: 100%;
+    height: 100px;
+}
+.star2{
+    border: 1px dotted #000;
+    width: 100%;
+    height: 200px;
+}
+.head{
+    width: 1200px;
+    height: 700px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    position: absolute;
+}
+.navbar-right > * {
+    margin: 4px;
+}
+.log-in, .sign-in{
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 5px 20px 5px 20px;
+}
+.log-in{
+    background-color: white;
+}
+.sign-in{
+    background-color: black;
+}
+
+.enter{
+    background-color: white;
+    color: black;
+    border: none;
+    text-transform: uppercase;
+}
+.name{
+    background-color: black;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+}
+.searchButton{
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 5px 20px 5px 20px;
+    background-color: white;
+    color: black;
+    text-transform: uppercase;
+    margin: 2px;
+}
+
+.filterButton{
+    font-weight: 500;
+    position:absolute;
+    right: 16%;
+    margin: 1px;
+    background-color: white;
+    text-transform: uppercase;
+    padding: 5px 20px 5px 20px;
+}
+
+.form-space {
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 5px 20px 5px 20px;
+}
+.strup{
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+}

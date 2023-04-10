@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>innup.com</title>
+    <meta name="viewort" content="width=980, user-scalable=no">
+    <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar-right">
+    <div class="log-in">
+        <button class="enter">Войти</button>
+    </div>
+    <div class ="sign-in" >
+        <button class="register">Регистрация</button>
+    </div>
+</div>
+<div class="upper">
+    <h1>INNUP</h1>
+</div>
+<div class = "wrapper1">
+    <div class="mainact">
+        <ul>
+            <li>Проекты</li>
+            <li>Стартаперы</li>
+            <li>Чаты</li>
+            <li>Безопасная сделка</li>
+            <li>INNUP++</li>
+        </ul>
+    </div>
+</div>
+<div class = "wrapper2">
+    <div class="search">
+        <form class = "form-space">
+            <input type="text">
+        </form>
+        <button class="searchButton">Найти старстап</button>
+        <button class="filterButton">Фильтр</button>
+    </div>
+    <table>
+        <h3>Стартапы</h3>
+    </table>
+</div>
+<hr>
+<div class="create-startup">
+    <div class="creation-block">
+        <form action="/startup/create" method="post" >
+            Название стартапа: <input type="text" name="title"/><br><br>
+            Описание стартапа: <input type="text" name="description"/><br><br>
+            Цена стартапа: <input type="price" name="price"/><br><br>
+            Имя: <input type="text" name="author"/><br><br>
+            Наличие сертификата: <input type="checkbox" name="certified"><br><br>
+            <input type="submit" value="Добавить товар"/>
+        </form>
+    </div>
+</div>
+<hr>
+<form action ="/product/create"></form>
+<div class="startUps">
+    <th:block th:each="startup : ${startups}">
+        <div class="strup">
+            <a th:href="@{'/startup/' + ${startup.ID}}">
+                <table>
+                    <h4 class="name" th:text="${startup.title}"></h4>
+                    <h4 class="author" th:text="${startup.author}"></h4>
+                    <h4 class="price" th:text="${startup.price} + ' рублей'"></h4>
+                    <p class ="description" th:text="${startup.description}"></p>
+                </table>
+            </a>
+        </div>
+    </th:block>
+</div>
+
+<!-- Fedya-->
+<div class="startUps">
+        <div class="strup">
+                <table>
+                    <h4 class="name">IPhone</h4>
+                    <h4 class="author">Pavel</h4>
+                    <h4 class="price">100000</h4>
+                    <p class ="description">qwdwqdqw</p>
+                </table>
+        </div>
+</div>
+<!-- Fedya-->
+
+</body>
+</html>
