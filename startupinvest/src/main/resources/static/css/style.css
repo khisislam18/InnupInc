@@ -58,11 +58,15 @@
     width: 1200px;
     height: 700px;
 }
+.header{
+    position: sticky;
+    background-color: black;
+    color: white;
+}
 .navbar-right{
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    position: absolute;
 }
 .navbar-right > * {
     margin: 4px;

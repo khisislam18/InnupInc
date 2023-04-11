@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -24,9 +25,11 @@ public class StartUpService {
     }
     public void saveStartUp(StartUp startUp){
         log.info("Saving new {}", startUp);
+        startUp.setCreationDate(LocalDate.now());
         startupRepositories.save(startUp);
     }
     public void deleteStartUp(Long id){
+        System.out.println(id);
         startupRepositories.deleteById(id);
     }
 
