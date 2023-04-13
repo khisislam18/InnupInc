@@ -7,22 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class StartUpController {
     private final StartUpService startUpService;
 
     @GetMapping("/startup/{id}")
     public String startUpInfo(@PathVariable Long id, Model model){
-        model.addAttribute("start-up-info", startUpService.getStartupById(id));
+        model.addAttribute("startup", startUpService.getStartupById(id));
         return "start-up-info";
     }
 
-    @GetMapping("/startup")
-    public String startUps(@RequestParam (name= "name", required = false, defaultValue = "World") String name, Model model){
-        model.addAttribute("name", name);
-        model.addAttribute("startups", startUpService.list());
-        return "startups";
+    @GetMapping("/")
+    public String startUps(@RequestParam(name = "title", required = false) String title, Model model){
+        model.addAttribute("startups", startUpService.startUpList(title));
+        return "mainpage";
     }
     @PostMapping("/startup/create")
     public String createStartup(StartUp startUp){

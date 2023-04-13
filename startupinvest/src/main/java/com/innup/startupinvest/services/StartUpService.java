@@ -1,35 +1,36 @@
 package com.innup.startupinvest.services;
 
 import com.innup.startupinvest.models.StartUp;
+import com.innup.startupinvest.repositories.StartupRepositories;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class StartUpService {
-    private List<StartUp> startUpList = new ArrayList<>();
-    private long ID = 0;
-    {
-        startUpList.add(new StartUp(++ID,"null", "null", 0, "Kazan","Islam"));
-        startUpList.add(new StartUp(++ID,"null","null",0,"Moscow","Egor"));
-    }
-
-    public List<StartUp> list() {
-        return startUpList;
+    private final StartupRepositories startupRepositories;
+    public List<StartUp> startUpList(String title){
+        List<StartUp> startUps = startupRepositories.findAll();
+        if(title != null){
+            return startupRepositories.findByTitle(title);
+        }
+        return startupRepositories.findAll();
     }
     public void saveStartUp(StartUp startUp){
-        startUpList.add(startUp);
+        log.info("Saving new {}", startUp);
+        startupRepositories.save(startUp);
     }
     public void deleteStartUp(Long id){
-        startUpList.removeIf(startUp -> startUp.getID().equals(id));
+        startupRepositories.deleteById(id);
     }
 
     public StartUp getStartupById(Long id) {
-        for (StartUp startUp: startUpList) {
-            if(startUp.getID().equals(id))
-                return startUp;
-        }
-        return null;
+        return startupRepositories.findById(id).orElse(null);
     }
 }
