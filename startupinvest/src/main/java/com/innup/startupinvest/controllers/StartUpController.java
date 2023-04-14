@@ -23,6 +23,10 @@ public class StartUpController {
         model.addAttribute("startups", startUpService.startUpList(title));
         return "mainpage";
     }
+    @PostMapping("/img")
+    public String usageImage(StartUp startUp){
+        return "redirect:/";
+    }
     @PostMapping("/startup/create")
     public String createStartup(StartUp startUp){
         startUpService.saveStartUp(startUp);

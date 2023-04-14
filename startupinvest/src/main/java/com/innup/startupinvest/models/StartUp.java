@@ -28,4 +28,7 @@ public class StartUp {
     private boolean certified;
     @Column(name="creationDate")
     private LocalDate creationDate;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private StartUp startUp;
 }

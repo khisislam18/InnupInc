@@ -21,7 +21,7 @@ public class StartUpService {
         if(title != null){
             return startupRepositories.findByTitle(title);
         }
-        return startupRepositories.findAll();
+        return startUps;
     }
     public void saveStartUp(StartUp startUp){
         log.info("Saving new {}", startUp);
