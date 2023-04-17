@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>StartUp</title>
+</head>
+<body>
+<h1>Hello world!</h1><hr>
+<h4>Стартапы</h4>
+<form action="/startup/create" method="post">
+  Название стартапа: <input type="text" name="title"/><br><br>
+  Описание стартапа: <input type="text" name="description"/><br><br>
+  Цена: <input type="number" name="price"/><br><br>
+  Город: <input type="text" name="city"/><br><br>
+  Имя: <input type="text" name="author"/><br><br>
+  <input type="submit" value="Добавить стартап">
+</form>
+
+</body>
+</html>
