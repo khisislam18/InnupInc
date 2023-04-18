@@ -17,6 +17,10 @@ public class StartUpController {
         model.addAttribute("startup", startUpService.getStartupById(id));
         return "start-up-info";
     }
+    @GetMapping("/startup/creation_menu")
+    public String creationMenu(Model model){
+        return "startups";
+    }
 
     @GetMapping("/")
     public String startUps(@RequestParam(name = "title", required = false) String title, Model model){

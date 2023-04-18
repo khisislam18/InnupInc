@@ -7,26 +7,28 @@
     <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="navbar-right">
-    <div class="log-in">
-        <button class="enter">Войти</button>
+<div class="header">
+    <div class="navbar-right">
+        <div class="log-in">
+            <button class="enter">Войти</button>
+        </div>
+        <div class ="sign-in" >
+            <button class="register">Регистрация</button>
+        </div>
     </div>
-    <div class ="sign-in" >
-        <button class="register">Регистрация</button>
+    <div class="upper">
+        <h1>INNUP</h1>
     </div>
-</div>
-<div class="upper">
-    <h1>INNUP</h1>
-</div>
-<div class = "wrapper1">
-    <div class="mainact">
-        <ul>
-            <li>Проекты</li>
-            <li>Стартаперы</li>
-            <li>Чаты</li>
-            <li>Безопасная сделка</li>
-            <li>INNUP++</li>
-        </ul>
+    <div class = "wrapper1">
+        <div class="mainact">
+            <ul>
+                <li>Проекты</li>
+                <li>Стартаперы</li>
+                <li>Чаты</li>
+                <li>Безопасная сделка</li>
+                <li>INNUP++</li>
+            </ul>
+        </div>
     </div>
 </div>
 <div class = "wrapper2">
@@ -45,7 +47,7 @@
 <hr>
 <div class="create-startup">
     <div class="creation-block">
-        <form action="/startup/create" method="post" >
+        <form action="/startup/create" method="post">
             Название стартапа: <input type="text" name="title"/><br><br>
             Описание стартапа: <input type="text" name="description"/><br><br>
             Цена стартапа: <input type="price" name="price"/><br><br>
@@ -76,16 +78,6 @@
         <h4>Стартапов пока нет... Добавьте стартап</h4>
     </div>
 </div>
-<form action="/search" method="searching">
-    <h1>Start Up</h1><hr>
-    <h4>Подробная информация о стартапе</h4>
-    <b>Название: </b><div></div><br>
-    <b>Описание: </b><div></div><br>
-    <b>Цена: </b><div></div><br>
-    <b>Автор: </b><div></div><br>
-    <b>Сертифицирован: </b><div></div><br>
-    <b>Дата создания: </b><div></div><br>
-</form>
 
 <!-- Fedya-->
 <!--<div class="startUps">

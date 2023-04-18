@@ -7,10 +7,12 @@
           content="Магазин для продажи скинов​, Магазин для продажи скинов​, Магазин для продажи скинов​">
     <meta name="description" content="">
     <title>projects</title>
-    <link rel="stylesheet" href="/css/style.css" media="screen" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="/css/projects.css" media="screen" th:href="@{/css/projects.css}">
-    <script class="u-script" type="text/javascript" src="/js/jquery.js" th:src="@{/js/jquery.js}" defer=""></script>
-    <script class="u-script" type="text/javascript" src="/js/nicepage.js" th:src="@{/js/nicepage.js}" defer=""></script>
+    <link rel="stylesheet" href="../../startupinvest/src/main/resources/static/css/style.css" media="screen">
+    <link rel="stylesheet" href="../../startupinvest/src/main/resources/static/css/projects.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../../startupinvest/src/main/resources/static/js/jquery.js"
+            defer=""></script>
+    <script class="u-script" type="text/javascript" src="../../startupinvest/src/main/resources/static/js/nicepage.js"
+            defer=""></script>
     <meta name="generator" content="Nicepage 5.8.2, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -25,16 +27,17 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="projects">
     <meta property="og:type" content="website">
-    <meta data-intl-tel-input-cdn-path="../intlTelInput/">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
 </head>
 <body data-home-page="mainpage.html" data-home-page-title="projects" class="u-body u-xl-mode" data-lang="ru">
 <header class="u-clearfix u-header u-header" id="sec-993b">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <a th:href="@{'/'}" class="u-image u-logo u-image-1" data-image-width="1464" data-image-height="948">
-            <img src="/img/whitelogo.png" th:src="@{/img/whitelogo.png}" class="u-logo-image u-logo-image-1">
+        <a class="u-image u-logo u-image-1" data-image-width="1464" data-image-height="948">
+            <img src="../../startupinvest/src/main/resources/static/images/whitelogo.png"
+                 class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
-            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0;">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
                 <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                    href="#">
                     <svg class="u-svg-link" viewBox="0 0 24 24">
@@ -54,23 +57,19 @@
                 <ul class="u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{'/'}" style="padding: 10px 8px;">Проекты</a>
+                            th:href="@{'/startup/creation_menu'}" style="padding: 10px 8px;">Проекты</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{'/startup/creation_menu'}" style="padding: 10px 8px;">Новый</a>
+                            th:href="@{'/startup/creation_menu'}" style="padding: 10px 8px;">Чаты</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{'/'}" style="padding: 10px 8px;">Чаты</a>
+                            th:href="@{'/startup/creation_menu'}" style="padding: 10px 8px;">INNUP++</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{'/'}" style="padding: 10px 8px;">INNUP++</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{'/'}" target="_blank" style="padding: 10px 8px;">О нас</a>
+                            th:href="@{'/startup/creation_menu'}" target="_blank" style="padding: 10px 8px;">О нас</a>
                     </li>
                 </ul>
             </div>
@@ -79,14 +78,17 @@
                     <div class="u-inner-container-layout u-sidenav-overflow">
                         <div class="u-menu-close"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'}">Проекты</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{'/startup/creation_menu'}">Проекты</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'}">Чаты</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{'/startup/creation_menu'}">Чаты</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'}">INNUP++</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{'/startup/creation_menu'}">INNUP++</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'}"
-                                                      target="_blank">О нас</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{'/startup/creation_menu'}" target="_blank">О нас</a>
                             </li>
                         </ul>
                     </div>
@@ -116,27 +118,29 @@
 <section class="u-clearfix u-section-1" id="sec-e60a">
     <div th:if="${not #lists.isEmpty(startups)}">
         <th:block th:each="startup : ${startups}">
-            <div th:class="${startups.size() > 1} ? 'u-clearfix u-sheet u-sheet-2' : 'u-clearfix u-sheet u-sheet-1'" style="margin-bottom: 2em;">
-                <div class="u-align-center u-container-style u-expanded-width u-grey-5 u-group u-group-1">
+            <div class="u-clearfix u-sheet u-sheet-2">
+                <div class="u-align-center u-container-style u-grey-5 u-group u-group-1">
                     <div class="u-container-layout u-container-layout-1">
                         <h1 class="u-text u-text-default u-text-1" th:text="${startup.title}"></h1>
                         <p class="u-text u-text-2" th:text="${startup.description}"></p>
-                        <a th:href="'/startup/' + ${startup.ID}"
+                        <a href=""
+                           class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-palette-1-base u-radius-50 u-btn-1">Подробнее</a>
+                        <h5 class="u-text u-text-3" th:text="${startup.price} + ' рублей'"></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-align-center u-container-style  u-grey-5 u-group u-group-1">
+                    <div class="u-container-layout u-container-layout-1">
+                        <h1 class="u-text u-text-default u-text-1" th:text="${startup.title}"></h1>
+                        <p class="u-text u-text-2" th:text="${startup.description}"></p>
+                        <a href=""
                            class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-palette-1-base u-radius-50 u-btn-1">Подробнее</a>
                         <h5 class="u-text u-text-3" th:text="${startup.price} + ' рублей'"></h5>
                     </div>
                 </div>
             </div>
         </th:block>
-    </div>
-    <div th:unless="${not #lists.isEmpty(startups)}">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <div class="u-align-center u-container-style u-expanded-width u-grey-5 u-group u-group-1">
-                <div class="u-container-layout u-container-layout-1">
-                    <h1 class="u-text u-text-default u-text-1">Пусто... Добавьте стартап</h1>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 <section class="u-clearfix u-section-3" id="sec-25f0">
