@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="startup")
 @Data
@@ -28,7 +31,19 @@ public class StartUp {
     private boolean certified;
     @Column(name="creationDate")
     private LocalDate creationDate;
-
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private StartUp startUp;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "startUp")
+    private List<Media> medias = new ArrayList<>();
+    private Long previewMediaId;
+
+    @PrePersist
+    private void init(){
+        creationDate = LocalDate.now();
+    }
+
+    public void addMediaToProduct(Media media) {
+        media.setStartUp(this);
+        medias.add(media);
+    }
 }

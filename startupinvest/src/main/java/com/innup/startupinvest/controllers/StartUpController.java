@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,7 +21,7 @@ public class StartUpController {
         return "start-up-info";
     }
     @GetMapping("/startup/creation_menu")
-    public String creationMenu(Model model){
+    public String creationMenu(){
         return "startups";
     }
 
@@ -32,8 +35,8 @@ public class StartUpController {
         return "redirect:/";
     }
     @PostMapping("/startup/create")
-    public String createStartup(StartUp startUp){
-        startUpService.saveStartUp(startUp);
+    public String createStartup(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2, @RequestParam("file3") MultipartFile file3, StartUp startUp) throws IOException {
+        startUpService.saveStartUp(startUp, file1, file2, file3);
         return "redirect:/";
     }
     @PostMapping("/startup/delete/{id}")

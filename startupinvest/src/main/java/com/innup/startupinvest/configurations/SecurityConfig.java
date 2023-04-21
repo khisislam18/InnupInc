@@ -22,7 +22,6 @@ import java.util.List;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig {
     private final CustomUserDetailsService userDetailService;
@@ -30,8 +29,9 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         .requestMatchers("/", "/registration").permitAll()
-                        .requestMatchers("/product/**", "/image/**")
+                        .requestMatchers("/startup/**", "/image/**")
                         .hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
                         .anyRequest().authenticated()
                 )
@@ -39,10 +39,10 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout(LogoutConfigurer::permitAll);
-
+                .logout((logout)->logout.permitAll());
         return http.build();
     }
+
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService)
                 .passwordEncoder(passwordEncoder());
