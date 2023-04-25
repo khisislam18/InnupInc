@@ -25,8 +25,6 @@ public class StartUp {
     private String description;
     @Column(name="price")
     private int price;
-    @Column(name="author")
-    private String author;
     @Column(name="certified")
     private boolean certified;
     @Column(name="creationDate")
@@ -35,6 +33,9 @@ public class StartUp {
     private StartUp startUp;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "startUp")
     private List<Media> medias = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
     private Long previewMediaId;
 
     @PrePersist

@@ -2,6 +2,7 @@ package com.innup.startupinvest.controllers;
 
 import com.innup.startupinvest.models.Media;
 import com.innup.startupinvest.repositories.MediaRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.core.io.InputStreamResource;
@@ -20,7 +21,8 @@ public class MediaController {
 
     @GetMapping("/medias/{id}")
     private ResponseEntity<?> getMediaById(@PathVariable Long id){
-        Media media = mediaRepository.findById(id).orElse(null);
+        Media media = mediaRepository.findMediaById(id);
+        assert media != null;
         return ResponseEntity.ok()
                 .header("fileName", media.getMediaPath())
                 .contentType(MediaType.valueOf(media.getContentType()))
