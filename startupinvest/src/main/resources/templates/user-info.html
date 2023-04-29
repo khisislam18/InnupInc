@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Innup</title>
+</head>
+<body>
+<h1>Innup</h1>
+<h4 th:text="'Товары пользователя ' + ${user.name}"></h4>
+<div th:if="${startups.isEmpty()}">
+    Товаров у пользователя нет
+</div>
+<div th:unless="${startups.isEmpty()}">
+    <th:block th:each="startup : ${startups}">
+        <p><b th:text="${startup.title}"></b></p>
+        <p><b th:text="${startup.price}"></b></p>
+        <a th:href="'/startup/' + ${startup.getID()}"></a>
+    </th:block>
+</div>
+</body>
+</html>

@@ -75,6 +75,7 @@ public class StartUpService {
     }
 
     public void deleteStartUp(Long id){
+        log.info("Saving new Startup. Startup Id: {};", id);
         startupRepositories.deleteById(id);
     }
 

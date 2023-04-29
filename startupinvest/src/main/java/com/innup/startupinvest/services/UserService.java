@@ -16,6 +16,7 @@ public class UserService {
     private final UserRepositories userRepositories;
     private final PasswordEncoder passwordEncoder;
 
+
     public boolean createUser(User user){
         String email = user.getEmail();
         if (userRepositories.findByEmail(email) != null) {
