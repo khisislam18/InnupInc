@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>StartUp</title>
+</head>
+<body>
+<h1>Hello world!</h1><hr>
+<h4>Стартапы</h4>
+<form action="/startup/create" method="post" enctype="multipart/form-data">
+  Название стартапа: <input type="text" name="title"/><br><br>
+  Описание стартапа: <input type="text" name="description"/><br><br>
+  Цена: <input type="number" name="price"/><br><br>
+  Город: <input type="text" name="city"/><br><br>
+  Добавить фотографию 1: <input type="file" name="file1"/><br><br>
+  Добавить фотографию 2: <input type="file" name="file2"/><br><br>
+  Добавить фотографию 3: <input type="file" name="file3"/><br><br>
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+  <input type="submit" value="Добавить стартап">
+</form>
+
+</body>
+</html>
