@@ -1,6 +1,7 @@
 package com.innup.startupinvest.repositories;
 
 import com.innup.startupinvest.models.StartUp;
+import com.innup.startupinvest.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,4 +9,5 @@ import java.util.List;
 @Repository
 public interface StartupRepositories extends JpaRepository<StartUp, Long> {
     List<StartUp> findByTitle(String title);
+    List<StartUp> findByUser(User user);
 }

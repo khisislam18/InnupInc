@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<h1>Личный кабинет</h1><hr>
+<h3 th:text="'Ваш личный кабинет, ' + ${user.name}"></h3>
+<form action="/user/edit_menu" method="get">
+    <input type="submit" value="Редактировать">
+</form>
+<b th:text="'Номер телефона: ' + ${user.phoneNumber}"></b><br>
+<b th:text="'Email: ' + ${user.email}"></b><br>
+<h4 th:text="'Ваши стартапы'"></h4>
+<div th:if="${startups.isEmpty()}">
+    <b>Стартапов у вас нет,</b>
+    <a th:href="@{'/startup/creation_menu'}"> создать? </a>
+</div>
+<div th:unless="${startups.isEmpty()}">
+    <th:block th:each="startup : ${startups}">
+        <p><a th:href="@{'/startup/' + ${startup.ID}}"><b th:text="${startup.title}"></b></a></p>
+        <p><b th:text="${startup.price}"></b></p>
+        <hr>
+    </th:block>
+</div>
+<div th:unless="${startups.isEmpty()}">
+    <form action="/startup/creation_menu" method="get">
+        <input type="submit" value="Создать новый стартап">
+    </form>
+</div>
+</body>
+</html>

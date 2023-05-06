@@ -5,16 +5,19 @@
     <title>Innup</title>
 </head>
 <body>
-<h1>Innup</h1>
-<h4 th:text="'Товары пользователя ' + ${user.name}"></h4>
+<h1>Innup</h1><hr>
+<h3 th:text="'Подробная информация о пользователе' + ${user.name}"></h3>
+<b th:text="'Номер телефона: ' + ${user.phoneNumber}"></b>
+<b th:text="'Email: ' + ${user.email}"></b>
+<h4 th:text="'Стартапы пользователя ' + ${user.name}"></h4>
 <div th:if="${startups.isEmpty()}">
-    Товаров у пользователя нет
+    Стартапов у пользователя нет
 </div>
 <div th:unless="${startups.isEmpty()}">
     <th:block th:each="startup : ${startups}">
-        <p><b th:text="${startup.title}"></b></p>
+        <p><a th:href="@{'/startup/' + ${startup.ID}}"><b th:text="${startup.title}"></b></a></p>
         <p><b th:text="${startup.price}"></b></p>
-        <a th:href="'/startup/' + ${startup.getID()}"></a>
+        <hr>
     </th:block>
 </div>
 </body>

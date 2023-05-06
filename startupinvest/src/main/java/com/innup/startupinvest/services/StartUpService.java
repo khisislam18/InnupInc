@@ -82,4 +82,24 @@ public class StartUpService {
     public StartUp getStartupById(Long id) {
         return startupRepositories.findById(id).orElse(null);
     }
+
+    public void updateStartup(Long id, String title, Integer price, String description) {
+        StartUp startupChange = startupRepositories.findById(id).orElse(null);
+        assert startupChange != null;
+        startupChange.setTitle(title);
+        startupChange.setPrice(price);
+        startupChange.setDescription(description);
+        log.info("Updating Startup with id = {}", id);
+        startupRepositories.save(startupChange);
+    }
+
+    public boolean startupReferenceToPrincipalCheck(Principal principal, Long id) {
+        List<StartUp> list = startupRepositories.findByUser(getUserByPrincipal(principal));
+        for (StartUp s:list) {
+            if(s.getID().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

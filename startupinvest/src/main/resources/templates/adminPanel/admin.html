@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>Панель администратора</h4>
+<hr>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Roles</th>
+        <th>Is Active?</th>
+        <th>Ban</th>
+        <th>Edit</th>
+        <th>Information</th>
+    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <th th:text = "${user.email}"></th>
+            <th th:text = "${user.phoneNumber}"></th>
+            <th>
+                <th:block th:each="userRoles : ${user.roles}">
+                    <span th:text="${userRoles}"></span>
+                </th:block>
+            </th>
+            <th th:text = "${user.active}"></th>
+            <th><form th:action="@{'/admin/ban/' + ${user.id}}" method="post">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                <input type="submit" value="Бан">
+            </form></th>
+            <th><form th:action="@{'/admin/user/edit-form/' + ${user.id}}">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                <input type="submit" value="edit">
+            </form></th>
+            <th><a th:href="@{'/user/' + ${user.id}}">Подробная информация</a></th>
+        </tr><hr>
+    </th:block>
+</table>
+</body>
+</html>

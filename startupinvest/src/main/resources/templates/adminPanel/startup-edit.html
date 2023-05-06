@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>StartUp</title>
+</head>
+<body>
+<h4>Стартапы</h4>
+<form th:action="@{'/admin/' + ${userId} + '/startup/edit/' + ${startup.ID}}" method="post" enctype="multipart/form-data">
+    Название стартапа: <input type="text" th:value="${startup.title}" name="title"/><br><br>
+    Описание стартапа: <input type="text" th:value="${startup.description}" name="description"/><br><br>
+    Цена: <input type="number" th:value="${startup.price}" name="price"/><br><br>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" value="Сохранить">
+</form>
+<form action="#" th:action="@{'/startup/delete/' + ${startup.ID}}" method="post">
+    <input type="submit" value="Удалить">
+</form>
+
+</body>
+</html>

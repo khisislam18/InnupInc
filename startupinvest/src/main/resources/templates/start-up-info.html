@@ -10,16 +10,17 @@
 <th:block th:each="media : ${medias}">
   <img src="#" th:src="@{'/medias/' + ${media.id}}" height="200px"/>
 </th:block>
+<th:block th:if="${principalCheck}">
+  <form th:action="@{'/startup/edit-menu/' + ${startup.ID}}">
+    <input type="submit" value="Редактировать">
+  </form>
+</th:block>
 <b>Название: </b><div th:text="${startup.title}"></div><br>
 <b>Описание: </b><div th:text="${startup.description}"></div><br>
 <b>Цена: </b><div th:text="${startup.price}"></div><br>
-<b>Автор: </b><div th:text="${user.name}"></div><br>
+<b>Автор: </b><a th:href="@{'/user/' + ${startup.user.id}}"><div th:text="${startup.user.name}"></div></a><br>
 <b>Сертифицирован: </b><div th:text="${startup.certified} ? 'Да': 'Нет'"></div><br>
 <b>Дата создания: </b><div th:text="${startup.creationDate}"></div><br>
-
-<form action="#" th:action="@{'/startup/delete/' + ${startup.ID}}" method="post">
-  <input type="submit" value="Удалить">
-</form>
 <form></form>
 </body>
 </html>

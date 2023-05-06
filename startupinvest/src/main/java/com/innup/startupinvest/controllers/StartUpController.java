@@ -1,9 +1,11 @@
 package com.innup.startupinvest.controllers;
 
 import com.innup.startupinvest.models.StartUp;
+import com.innup.startupinvest.repositories.StartupRepositories;
 import com.innup.startupinvest.repositories.UserRepositories;
 import com.innup.startupinvest.services.StartUpService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,11 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class StartUpController {
     private final StartUpService startUpService;
+    private StartupRepositories startupRepositories;
 
     @GetMapping("/startup/{id}")
     public String startUpInfo(@PathVariable Long id, Model model, Principal principal){
+        model.addAttribute("principalCheck", startUpService.startupReferenceToPrincipalCheck(principal, id));
         model.addAttribute("startup", startUpService.getStartupById(id));
         model.addAttribute("medias", startUpService.getStartupById(id).getMedias());
         model.addAttribute("user", startUpService.getUserByPrincipal(principal));
@@ -44,5 +48,15 @@ public class StartUpController {
     public String deleteStartUp(@PathVariable Long id){
         startUpService.deleteStartUp(id);
         return "redirect:/";
+    }
+    @GetMapping("/startup/edit-menu/{id}")
+    public String startupEditMenu(@PathVariable("id") Long id, Model model){
+        model.addAttribute("startup", startUpService.getStartupById(id));
+        return "start-up-edit";
+    }
+    @PostMapping("/startup/edit/{id}")
+    public String editStartUp(@PathVariable Long id, @RequestParam(name = "title") String title, @RequestParam(name = "price") Integer price, @RequestParam(name = "description") String description){
+        startUpService.updateStartup(id, title, price, description);
+        return "redirect:/startup/" + id;
     }
 }

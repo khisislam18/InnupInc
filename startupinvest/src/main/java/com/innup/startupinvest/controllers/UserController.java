@@ -2,6 +2,7 @@ package com.innup.startupinvest.controllers;
 
 
 import com.innup.startupinvest.models.User;
+import com.innup.startupinvest.repositories.StartupRepositories;
 import com.innup.startupinvest.repositories.UserRepositories;
 import com.innup.startupinvest.services.CustomUserDetailsService;
 import com.innup.startupinvest.services.UserService;
@@ -13,10 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final StartupRepositories startupRepositories;
     private final CustomUserDetailsService customUserDetailsService;
     private final UserRepositories userRepositories;
     private final PasswordEncoder passwordEncoder;
@@ -42,12 +46,30 @@ public class UserController {
             return "registration";
         }
         userService.createUser(user);
-        return "redirect:/mainpage";
+        return "redirect:/";
+    }
+    @GetMapping("/user/my_profile")
+    public String myProfile(Principal principal, Model model){
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
+        model.addAttribute("startups", startupRepositories.findByUser(userService.getUserByPrincipal(principal)));
+        return "my-profile";
+    }
+    @GetMapping("/user/edit_menu")
+    public String profileEditMenu(Principal principal, Model model){
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
+        model.addAttribute("userStartups", startupRepositories.findByUser(userService.getUserByPrincipal(principal)));
+        return "my-profile-edit";
+    }
+    @PostMapping("/user/edit_menu/edit")
+    public String profileEditAction(Principal principal, @RequestParam("username") String username, @RequestParam("phoneNumber") String phoneNumber, @RequestParam("email") String email){
+        userService.updateUser(userService.getUserByPrincipal(principal).getId(), username, phoneNumber, email);
+        return "redirect:/my-profile";
     }
     @GetMapping("/user/{id}")
-    public String userInfo(@PathVariable("user") User user, Model model){
+    public String userInfo(@PathVariable("id") Long userId, Model model){
+        User user = userRepositories.findById(userId).orElse(null);
         model.addAttribute("user", user);
-        model.addAttribute("startups", user.getStartUpList());
+        model.addAttribute("startups", startupRepositories.findByUser(user));
         return "user-info";
     }
     @GetMapping("/hello")

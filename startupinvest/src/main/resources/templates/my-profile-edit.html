@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Innup</title>
+</head>
+<body>
+<h1>Редактирование</h1><hr>
+<form th:action="@{'/user/edit_menu/edit'}" method="post">
+    <input type = "text" placeholder="Имя пользователя" th:value="${user.name}" name="name">
+    <input type = "text" placeholder="Номер телефона" th:value="${user.phoneNumber}" name="phoneNumber">
+    <input type = "text" placeholder="Электронная почта" th:value="${user.email}" name="email">
+    <input type="submit" value="Сохранить">
+</form>
+<h4 th:text="'Стартапы пользователя ' + ${user.name}"></h4>
+<div th:if="${userStartups.isEmpty()}">
+    Стартапов у пользователя нет
+</div>
+<div th:unless="${userStartups.isEmpty()}">
+    <th:block th:each="startup : ${userStartups}">
+        <p><a th:href="@{'/startup/' + ${startup.ID}}"><b th:text="${startup.title}"></b></a></p>
+        <p><b th:text="${startup.price}"></b></p>
+        <form th:action="@{'/startup/edit-menu/' + ${startup.ID}}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="submit" value="edit">
+        </form>
+        <hr>
+    </th:block>
+</div>
+</body>
+</html>
